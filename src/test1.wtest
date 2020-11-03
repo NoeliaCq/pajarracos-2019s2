@@ -1,0 +1,44 @@
+import Aves.*
+import Islas.*
+
+test "Isla y Aves" {
+	//escenario
+	
+	const aguiRojo = new AguiluchoColorado()
+	const albatros1 = new Albatros()
+	const torcacita = new Torcaza()
+	
+	const islaDelSol = new Isla()
+	
+	islaDelSol.agregarAves([aguiRojo, albatros1, torcacita])
+	
+	albatros1.irAlGimnasio()
+	
+
+	assert.equals(580, aguiRojo.fuerza())
+	assert.equals(1100, albatros1.fuerza())
+	assert.equals(700, torcacita.fuerza())
+	
+	assert.equals(4500, albatros1.peso())
+	assert.equals(2380, islaDelSol.fuerzaTotal())
+	assert.equals([aguiRojo, torcacita], islaDelSol.avesDebiles())
+	
+	islaDelSol.huboUnTerremoto()
+	
+	assert.equals(40, aguiRojo.velocidad())
+	assert.equals(5300, albatros1.peso())
+	assert.equals(500, torcacita.ira())
+	
+	assert.equals(580, aguiRojo.fuerza())
+	assert.equals(1100, albatros1.fuerza())
+	assert.equals(1400, torcacita.fuerza())
+	
+	assert.equals([aguiRojo], islaDelSol.avesDebiles())
+	
+	islaDelSol.huboUnaTormenta()
+	
+	assert.equals(80, aguiRojo.velocidad())
+	assert.equals(640, aguiRojo.fuerza())
+	assert.equals(5300, albatros1.peso())
+	assert.equals(500, torcacita.ira())
+}
